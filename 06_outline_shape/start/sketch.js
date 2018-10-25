@@ -5,7 +5,7 @@ const SIDES = 6
 let PALETTE = []
 
 function setup() {
-  createCanvas(530, 530, SVG)
+  createCanvas(530, 530)
 
   PALETTE = [
     color(255, 52, 154), // pink

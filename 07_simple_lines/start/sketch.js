@@ -3,7 +3,7 @@ const SIDES = 6
 let PALETTE = []
 
 function setup() {
-  createCanvas(530, 530, SVG)
+  createCanvas(530, 530)
 
   PALETTE = [
     color(255, 52, 154), // pink
@@ -17,7 +17,37 @@ function setup() {
 
 function draw() {
   testLines()
-  // outlineShape()
+  //outlineShape()
+  simpleLines() 
+}
+
+function simpleLines() {
+  const stepsOut = 8
+  const numSteps = randomSelectTwo() ? stepsOut : int(stepsOut * 1.25)
+  const step = (CRYSTAL_SIZE / 2) / numSteps
+  const start = floor(random(0, numSteps))
+  const stop = floor(random(start, numSteps + 1))
+
+  let numShapes = randomSelectTwo() ? SIDES : SIDES * 2
+  const strokeColor = getRandomFromPalette()
+  const weight = randomSelectTwo() ? 1 : 3
+  console.log('rando:' + randomSelectTwo())
+
+  const angle = 360 / numShapes
+
+  noFill()
+  stroke(strokeColor)
+  strokeWeight(weight)
+  push()
+    translate(width/2, height/2)
+    //ellipse(0, 0, CRYSTAL_SIZE, CRYSTAL_SIZE)
+    //stroke(strokeColor)
+    
+    for (let i = 0; i < numShapes; i++) {
+      line(start * step, 0, stop * step, 0)  
+      rotate(angle)
+    }
+  pop()
 }
 
 
@@ -39,7 +69,7 @@ function outlineShape () {
 }
 
 function testLines () {
-  let numShapes = randomSelectTwo() ? SIDES : SIDES * 2
+  let numShapes = randomSelectTwo() ? SIDES : SIDES * 3
   const strokeColor = getRandomFromPalette()
 
   noFill()
@@ -57,15 +87,6 @@ function testLines () {
   pop()
 }
 
-function randomSelectTwo () {
-  const rando = random(2)
-  return rando > 1 ? true : false
-}
-
-function getRandomFromPalette () {
-  const rando = floor(random(0, PALETTE.length))
-  return PALETTE[rando]
-}
 
 
 

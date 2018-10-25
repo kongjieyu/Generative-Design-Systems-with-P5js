@@ -31,6 +31,7 @@ function getRandomFromPalette () {
 function randomSelectTwo () {
   const rando = random(2)
   return rando > 1 ? true : false
+  console.log('rando:' + rando)
 }
 
 function getRandomFromPalette () {
